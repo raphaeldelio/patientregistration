@@ -8,6 +8,7 @@ import (
 	"github.com/MarcGrol/patientregistration/lib/api/pingenerator"
 	"github.com/MarcGrol/patientregistration/regprotobuf"
 	"github.com/google/uuid"
+	"strconv"
 )
 
 type RegistrationService struct {
@@ -43,7 +44,7 @@ func (rs *RegistrationService) RegisterPatient(ctx context.Context, req *regprot
 	pin, _ := rs.pinGenerator.GeneratePin()
 
 	//send pin to email
-	err = rs.emailSender.SendEmail(email, "validate", "This is your pin "+string(pin))
+	err = rs.emailSender.SendEmail(email, "validate", "This is your pin "+strconv.Itoa(pin))
 	if err != nil {
 		fmt.Println("Cannot send PIN to: ", email)
 		return nil, err
