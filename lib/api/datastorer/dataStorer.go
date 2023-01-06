@@ -4,6 +4,7 @@ package datastorer
 
 type PatientStorer interface {
 	GetPatientOnUid(uid string) (Patient, bool, error)
+	GetPatientOnEmail(email string) (Patient, bool, error)
 	PutPatientOnUid(patient Patient) error
 }
 

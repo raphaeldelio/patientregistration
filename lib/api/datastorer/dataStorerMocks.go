@@ -33,6 +33,22 @@ func (m *MockPatientStorer) EXPECT() *MockPatientStorerMockRecorder {
 	return m.recorder
 }
 
+// GetPatientOnEmail mocks base method.
+func (m *MockPatientStorer) GetPatientOnEmail(email string) (Patient, bool, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetPatientOnEmail", email)
+	ret0, _ := ret[0].(Patient)
+	ret1, _ := ret[1].(bool)
+	ret2, _ := ret[2].(error)
+	return ret0, ret1, ret2
+}
+
+// GetPatientOnEmail indicates an expected call of GetPatientOnEmail.
+func (mr *MockPatientStorerMockRecorder) GetPatientOnEmail(email interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPatientOnEmail", reflect.TypeOf((*MockPatientStorer)(nil).GetPatientOnEmail), email)
+}
+
 // GetPatientOnUid mocks base method.
 func (m *MockPatientStorer) GetPatientOnUid(uid string) (Patient, bool, error) {
 	m.ctrl.T.Helper()

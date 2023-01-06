@@ -32,3 +32,17 @@ func (ps *inMemoryPatientStore) GetPatientOnUid(patientUID string) (datastorer.P
 
 	return patient, found, nil
 }
+
+func (ps *inMemoryPatientStore) GetPatientOnEmail(patientEmail string) (datastorer.Patient, bool, error) {
+	ps.Lock()
+	defer ps.Unlock()
+
+	for patientUID := range ps.patients {
+		patient := ps.patients[patientUID]
+		if patientEmail == ps.patients[patientUID].Contact.EmailAddress {
+			return patient, true, nil
+		}
+	}
+
+	return datastorer.Patient{}, false, nil
+}

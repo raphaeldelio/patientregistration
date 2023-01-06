@@ -4,6 +4,10 @@ import (
 	"testing"
 )
 
+func NewRegistrationService() {
+
+}
+
 func TestRegistrationWithEmailSuccess(t *testing.T) {
 	// TODO
 }
